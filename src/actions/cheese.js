@@ -20,7 +20,7 @@ export const fetchCheesesError = (error) => ({
 
 export const fetchCheeses = () => dispatch => {
   dispatch(fetchCheesesRequest())
-  return fetch(`${BASE_URL}/api/cheeses`)
+  return fetch(`${BASE_URL}cheeses`)
     .then(res => res.json())
     .then(data => dispatch(fetchCheesesSuccess(data))) 
     .catch(error => dispatch(fetchCheesesError(error)))
