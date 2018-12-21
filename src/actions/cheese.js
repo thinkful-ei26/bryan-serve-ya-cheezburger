@@ -6,8 +6,9 @@ export const fetchCheesesRequest = () => ({
 })
 
 export const FETCH_CHEESES_SUCCESS = 'FETCH_CHEESES_SUCCESS'
-export const fetchCheesesSuccess = () => ({
-  type: FETCH_CHEESES_SUCCESS
+export const fetchCheesesSuccess = (cheeses) => ({
+  type: FETCH_CHEESES_SUCCESS,
+  cheeses // pass in value with the action
 })
 
 export const FETCH_CHEESES_ERROR = 'FETCH_CHEESES_ERROR'
@@ -21,6 +22,6 @@ export const fetchCheeses = () => dispatch => {
   dispatch(fetchCheesesRequest())
   return fetch(`${BASE_URL}/api/cheeses`)
     .then(res => res.json())
-    .then(cheese => dispatch(fetchCheesesSuccess(cheese)))
+    .then(data => dispatch(fetchCheesesSuccess(data))) 
     .catch(error => dispatch(fetchCheesesError(error)))
 }

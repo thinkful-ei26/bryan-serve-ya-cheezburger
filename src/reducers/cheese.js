@@ -17,6 +17,7 @@ const fetchCheeseReducer = (state = initialState, action) => {
     case FETCH_CHEESES_SUCCESS:
       return { ...state, loading: false, error: null, cheeses: action.cheeses }
     case FETCH_CHEESES_ERROR:
+    console.log('action.error', action.error)
       return { ...state, loading: false, error: action.error }
     default:
       return state
